@@ -1,4 +1,5 @@
 import { BiSearchAlt2 } from "react-icons/bi";
+import AddUser from "./AddUser";
 
 const Details = ({setSearch, search,sort,setSort }) => {
   const handleSorting = (event) => {
@@ -12,7 +13,6 @@ const Details = ({setSearch, search,sort,setSort }) => {
 
   return (
     <div className="p-4 md:p-8">
-
       <div className="flex flex-col md:flex-row justify-between md:mt-5 mt-5 ">
         <div
           style={{ display: "flex", alignItems: "center" }}
@@ -40,7 +40,9 @@ const Details = ({setSearch, search,sort,setSort }) => {
         </div>
 
         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-          <select value={sort}
+          <AddUser></AddUser>
+          <select
+            value={sort}
             onChange={handleSorting}
             className="select select-bordered w-full max-w-xs md:max-w-full select-helvetica"
           >
