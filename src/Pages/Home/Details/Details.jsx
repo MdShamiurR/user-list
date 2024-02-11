@@ -46,8 +46,8 @@ const Details = ({setSearch, search,sort,setSort }) => {
             onChange={handleSorting}
             className="select select-bordered w-full max-w-xs md:max-w-full select-helvetica"
           >
-            <option selected disabled>
-              Sort Users
+            <option value=""  defaultValue>
+              All Users
             </option>
             <option value="1">Sort by name</option>
             <option value="2">Sort by email</option>

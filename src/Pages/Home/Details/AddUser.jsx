@@ -1,6 +1,12 @@
+
 import { useState } from "react";
 
-const AddUser = ({ addUser }) => {
+const AddUser = () => {
+    // console.log(
+    //   "add user",
+    //   typeof addUser !== "undefined" ? typeof addUser : "not defined"
+    // );
+
   const [formData, setFormData] = useState({
     avatar: "",
     firstName: "",
@@ -10,12 +16,30 @@ const AddUser = ({ addUser }) => {
     companyName: "",
   });
 
+  const formSubmit=()=>{
+    fetch("https://dummyjson.com/users/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        avatar: formData.avatar,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        address: formData.address,
+        companyName: formData.companyName,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json,"gg"));
+  }
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    formSubmit();
   };
 
   const handleFileChange = (event) => {
@@ -25,8 +49,9 @@ const AddUser = ({ addUser }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Submitted form", formData);
     // Pass the form data to a parent function for further processing
-    addUser(formData);
+    // addUser(formData);
     // Close the modal
     document.getElementById("my_modal_5").close();
   };
@@ -133,93 +158,3 @@ const AddUser = ({ addUser }) => {
 };
 
 export default AddUser;
-
-// const AddUser = () => {
-//     return (
-//       <div>
-//         {/* Open the modal using document.getElementById('ID').showModal() method */}
-//         <button
-//           className="btn"
-//           onClick={() => document.getElementById("my_modal_5").showModal()}
-//         >
-//           Add User
-//         </button>
-//         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-//           <div className="modal-box">
-//             <h3 className="font-bold text-lg">Hello!</h3>
-//             <p className="py-4">
-//               Press ESC key or click the button below to close
-//             </p>
-//             <div className="modal-action">
-//               <form method="dialog">
-//                 <div className="">
-//                   <div className="card-body grid grid-cols-1 sm:grid-cols-2 gap-3">
-//                     <div className="form-control w-full">
-//                       <input
-//                         type="file"
-//                         className="file-input file-input-bordered w-full max-w-xs bg-slate-500"
-//                       />
-//                     </div>
-//                     <br />
-//                     <div className="form-control ">
-//                       <input
-//                         type="text"
-//                         name="firstName"
-//                         placeholder="First Name"
-//                         className="input"
-//                       />
-//                     </div>
-//                     <div className="form-control ">
-//                       <input
-//                         type="text"
-//                         name="lastName"
-//                         placeholder="Last Name"
-//                         className="input"
-//                       />
-//                     </div>
-//                     <div className="form-control">
-//                       <input
-//                         type="email"
-//                         name="email"
-//                         placeholder=" Your Email"
-//                         className="input"
-//                       />
-//                     </div>
-//                     <div className="form-control ">
-//                       <input
-//                         type="text"
-//                         name="address"
-//                         placeholder="Address(Streer,Suite),City"
-//                         className="input"
-//                       />
-//                     </div>
-//                     <div className="form-control ">
-//                       <input
-//                         type="text"
-//                         name="companyName"
-//                         placeholder="Company Name"
-//                         className="input"
-//                       />
-//                     </div>
-//                   </div>
-
-//                   <div className="form-control mt-24">
-//                     {/* <button className="btn bg-[#FF3811] text-white">Order Confirm</button> */}
-//                     <input
-//                       className="btn bg-[#FF3811] text-white"
-//                       type="submit"
-//                       value="Submit"
-//                     />
-//                   </div>
-//                 </div>
-//                 {/* if there is a button in form, it will close the modal */}
-//                 <button className="btn">Close</button>
-//               </form>
-//             </div>
-//           </div>
-//         </dialog>
-//       </div>
-//     );
-// };
-
-// export default AddUser;
