@@ -1,12 +1,6 @@
-
 import { useState } from "react";
 
 const AddUser = () => {
-    // console.log(
-    //   "add user",
-    //   typeof addUser !== "undefined" ? typeof addUser : "not defined"
-    // );
-
   const [formData, setFormData] = useState({
     avatar: "",
     firstName: "",
@@ -16,7 +10,7 @@ const AddUser = () => {
     companyName: "",
   });
 
-  const formSubmit=()=>{
+  const formSubmit = () => {
     fetch("https://dummyjson.com/users/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,8 +24,8 @@ const AddUser = () => {
       }),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json,"gg"));
-  }
+      .then((json) => console.log(json, "gg"));
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,17 +36,13 @@ const AddUser = () => {
     formSubmit();
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    // You can handle the file as needed (e.g., upload to server, show a preview)
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted form", formData);
-    // Pass the form data to a parent function for further processing
-    // addUser(formData);
-    // Close the modal
     document.getElementById("my_modal_5").close();
   };
 
@@ -66,10 +56,12 @@ const AddUser = () => {
       </button>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">
-            Press ESC key or click the button below to close
-          </p>
+          <div className="text-center mt-5">
+            <h3 className="font-bold text-lg ">Hello!</h3>
+            <p className="py-4">
+              Press ESC key or click the button below to close
+            </p>
+          </div>
           <div className="modal-action">
             <form onSubmit={handleSubmit} method="dialog">
               <div className="">
@@ -77,7 +69,7 @@ const AddUser = () => {
                   <div className="form-control w-full">
                     <input
                       type="file"
-                      onChange={handleFileChange}
+                      // onChange={handleFileChange}
                       className="file-input file-input-bordered w-full max-w-xs bg-slate-500"
                     />
                   </div>
@@ -134,9 +126,9 @@ const AddUser = () => {
                   </div>
                 </div>
 
-                <div className="form-control mt-24">
+                <div className="form-control mb-2">
                   <input
-                    className="btn bg-[#FF3811] text-white"
+                    className="btn bg-[#FF3811] text-white w-2/3 mx-auto"
                     type="submit"
                     value="Submit"
                   />
@@ -144,7 +136,7 @@ const AddUser = () => {
               </div>
               {/* if there is a button in the form, it will close the modal */}
               <button
-                className="btn"
+                className="btn bg-red-800 w-2/3 mx-auto flex justify-center"
                 onClick={() => document.getElementById("my_modal_5").close()}
               >
                 Close

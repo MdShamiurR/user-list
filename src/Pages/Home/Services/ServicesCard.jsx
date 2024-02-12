@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
 const ServicesCard = ({ service }) => {
+  
   const { image, firstName, lastName, email, address, company,id } = service;
-
-
 
   return (
     <div className="card  bg-base-100 border-gray-400 border rounded-lg mb-5">
@@ -19,7 +18,6 @@ const ServicesCard = ({ service }) => {
             </p>
           </button>
         </Link>
-
         <h2 className="text-2xl text-[#212529]">{email}</h2>
         <p>
           {address.address},&nbsp;{address.city} <br />

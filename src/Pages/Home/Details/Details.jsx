@@ -1,13 +1,19 @@
 import { BiSearchAlt2 } from "react-icons/bi";
+import "../../Home/Details/Details.css";
 import AddUser from "./AddUser";
 
-const Details = ({setSearch, search,sort,setSort }) => {
+
+const Details = ({
+  setSearch,
+  search,
+  sort,
+  setSort,
+}) => {
   const handleSorting = (event) => {
     setSort(event.target.value);
-   
   };
 
-    const handleChange = (event) => {
+  const handleChange = (event) => {
     setSearch(event.target.value);
   };
 
@@ -27,7 +33,7 @@ const Details = ({setSearch, search,sort,setSort }) => {
             onChange={handleChange}
           />
           <button
-            className="btn  btn-primary"
+            className="btn  btn-primary custom-button"
             style={{
               borderBottomLeftRadius: "0",
               borderTopLeftRadius: "0",
@@ -46,7 +52,7 @@ const Details = ({setSearch, search,sort,setSort }) => {
             onChange={handleSorting}
             className="select select-bordered w-full max-w-xs md:max-w-full select-helvetica"
           >
-            <option value=""  defaultValue>
+            <option value="" defaultValue>
               All Users
             </option>
             <option value="1">Sort by name</option>
